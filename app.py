@@ -64,10 +64,6 @@ def search_professor():
     if not rsp:
         return jsonify({"error": f"Query was unsuccessful for professor name: {prof_name} and school id: {school_id}"}), 400
 
-    for edge in rsp["newSearch"]["schools"]["edges"]:
-        node_dict = edge["node"]
-        node_dict["url"] = build_rating_link(node_dict["legacyId"])
-
     return jsonify(rsp), 200
 
 @app.get("/ratings")
