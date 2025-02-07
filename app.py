@@ -58,7 +58,7 @@ def search_school():
 
 @app.get("/professor")
 @limiter.limit("5 per minute")
-def search_prof():
+def search_professor():
     prof_name = request.args.get("name")
     school_id = request.args.get("id")
     if not prof_name or not school_id:
@@ -68,6 +68,10 @@ def search_prof():
     rsp = rmp.execute_query(PROF_SEARCH_QUERY, variables)
     if not rsp:
         return jsonify({"error": f"Query was unsuccessful for professor name: {prof_name} and school id: {school_id}"}), 400
+
+    for edge in rsp["newSearch"]["schools"]["edges"]:
+        node_dict = edge["node"]
+        node_dict["url"] = build_rating_link(node_dict["legacyId"])
 
     return jsonify(rsp), 200
 
