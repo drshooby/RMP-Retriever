@@ -31,10 +31,8 @@ def helper():
     <p><strong>Use /professor to help you find the 'id' field for this endpoint.</strong></p>
     
     <br>
-    <p><strong>Please be considerate of Rate My Professors' API!</strong> This is supposed to be a fun little side project.</p>
-    
-    <br>
-    <h4>Wanna leave feedback? Visit the repo: <a href="https://github.com/drshooby/RMP-Retriever">GitHub link</a></h4>
+    <h2><strong>Please be considerate of Rate My Professors' API!</strong> This is supposed to be a fun little side project.</h2>
+    <p>Wanna leave feedback? Visit the repo: <a href="https://github.com/drshooby/RMP-Retriever">GitHub link</a>.</p>
     """
 
 @app.get("/school")
