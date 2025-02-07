@@ -1,20 +1,15 @@
 from flask import Flask, request, jsonify
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from flask_cors import CORS
 from rmp_wrapper import *
 from queries import *
-from werkzeug.exceptions import TooManyRequests
 
 app = Flask(__name__)
-limiter = Limiter(get_remote_address, app=app)
 
 CORS(app)
 
 rmp = RMPWrapper()
 
 @app.route("/")
-@limiter.exempt
 def helper():
     return """
     <h1>Welcome! Here you can find your options:</h1>
@@ -39,7 +34,6 @@ def helper():
     """
 
 @app.get("/school")
-@limiter.limit("5 per minute")
 def search_school():
     school_name = request.args.get("name")
     if not school_name:
@@ -57,7 +51,6 @@ def search_school():
     return jsonify(rsp), 200
 
 @app.get("/professor")
-@limiter.limit("5 per minute")
 def search_professor():
     prof_name = request.args.get("name")
     school_id = request.args.get("id")
@@ -76,7 +69,6 @@ def search_professor():
     return jsonify(rsp), 200
 
 @app.get("/ratings")
-@limiter.limit("5 per minute")
 def search_ratings():
     prof_id = request.args.get("id")
     if not prof_id:
@@ -90,7 +82,3 @@ def search_ratings():
     rsp["node"]["url"] = build_rating_link(rsp["node"]["legacyId"])
 
     return jsonify(rsp), 200
-
-@app.errorhandler(TooManyRequests)
-def handle_rate_limit_error(error):
-    return jsonify({"error": "Let's be considerate of RMP's servers. Please try again in a minute."}), 429
