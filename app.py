@@ -9,8 +9,29 @@ CORS(app)
 rmp = RMPWrapper()
 
 @app.route("/")
-def debug():
-    return "Hi! This is a debug route"
+def helper():
+    return """
+    Welcome! Here you can find your options:
+    
+    1. /school
+       - Endpoint to search for schools.
+       - Requires the query parameter 'name' (e.g., /school?name=Harvard).
+       - This endpoint returns details about schools, including a URL.
+
+    2. /professor
+       - Endpoint to search for professors.
+       - Requires the query parameters 'name' and 'id' (e.g., /professor?name=John&id=U2Xvasd9sLbg4MA==).
+       - This endpoint returns details about professors.
+       - Use /school to help you find the id field for this endpoint.
+
+    3. /ratings
+       - Endpoint to search for professor ratings.
+       - Requires the query parameter 'id' (e.g., /ratings?id=n32lkanSD9==).
+       - This endpoint returns details about the professor's ratings, including a URL.
+       - Use /professor to help you find the id field for this endpoint.
+    
+    For more details, please make sure to include the required query parameters for each endpoint.
+    """
 
 @app.get("/school")
 def search_school():
