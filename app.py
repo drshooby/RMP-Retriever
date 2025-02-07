@@ -29,8 +29,12 @@ def helper():
     <p><strong>Requires the query parameter 'id' (e.g., <em>/ratings?id=n32lkanSD9==</em>)</strong></p>
     <p>This endpoint returns details about the professor's ratings, including a URL.</p>
     <p><strong>Use /professor to help you find the 'id' field for this endpoint.</strong></p>
-
-    <p><strong>For more details, please make sure to include the required query parameters for each endpoint.</strong></p>
+    
+    <br>
+    <p><strong>Please be considerate of Rate My Professors' API!</strong> This is supposed to be a fun little side project.</p>
+    
+    <br>
+    <h4>Wanna leave feedback? Visit the repo: <a href="https://github.com/drshooby/RMP-Retriever">GitHub link</a></h4>
     """
 
 @app.get("/school")
