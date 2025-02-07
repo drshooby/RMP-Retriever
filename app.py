@@ -11,26 +11,25 @@ rmp = RMPWrapper()
 @app.route("/")
 def helper():
     return """
-    Welcome! Here you can find your options:
-    
-    1. /school
-       - Endpoint to search for schools.
-       - Requires the query parameter 'name' (e.g., /school?name=Harvard).
-       - This endpoint returns details about schools, including a URL.
+    <h1>Welcome! Here you can find your options:</h1>
+    <h2>1. /school</h2>
+    <p>Endpoint to search for schools.</p>
+    <p><strong>Requires the query parameter 'name' (e.g., <em>/school?name=Harvard</em>)</strong></p>
+    <p>This endpoint returns details about schools, including a URL.</p>
 
-    2. /professor
-       - Endpoint to search for professors.
-       - Requires the query parameters 'name' and 'id' (e.g., /professor?name=John&id=U2Xvasd9sLbg4MA==).
-       - This endpoint returns details about professors.
-       - Use /school to help you find the id field for this endpoint.
+    <h2>2. /professor</h2>
+    <p>Endpoint to search for professors.</p>
+    <p><strong>Requires the query parameters 'name' and 'id' (e.g., <em>/professor?name=John&id=U2Xvasd9sLbg4MA==</em>)</strong></p>
+    <p>This endpoint returns details about professors.</p>
+    <p><strong>Use /school to help you find the 'id' field for this endpoint.</strong></p>
 
-    3. /ratings
-       - Endpoint to search for professor ratings.
-       - Requires the query parameter 'id' (e.g., /ratings?id=n32lkanSD9==).
-       - This endpoint returns details about the professor's ratings, including a URL.
-       - Use /professor to help you find the id field for this endpoint.
-    
-    For more details, please make sure to include the required query parameters for each endpoint.
+    <h2>3. /ratings</h2>
+    <p>Endpoint to search for professor ratings.</p>
+    <p><strong>Requires the query parameter 'id' (e.g., <em>/ratings?id=n32lkanSD9==</em>)</strong></p>
+    <p>This endpoint returns details about the professor's ratings, including a URL.</p>
+    <p><strong>Use /professor to help you find the 'id' field for this endpoint.</strong></p>
+
+    <p><strong>For more details, please make sure to include the required query parameters for each endpoint.</strong></p>
     """
 
 @app.get("/school")
